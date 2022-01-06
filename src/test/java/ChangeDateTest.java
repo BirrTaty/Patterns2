@@ -18,7 +18,6 @@ public class ChangeDateTest {
 
     @Test
     void shouldSendRegistrationForm() {
-        // отправка формы первоначально
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999/");
         $("[data-test-id='city'] input").setValue(info.getCity());
@@ -31,9 +30,7 @@ public class ChangeDateTest {
         $("[data-test-id='success-notification'] .notification__content").shouldBe(Condition.visible)
                 .shouldHave(Condition.text("Встреча успешно запланирована на  " + generateDate(3)), Duration.ofSeconds(15));
         $("button.notification__closer").click();
-        //System.out.println(info);
 
-        // отправка формы с коррекцией даты
         $("[data-test-id='city'] input")
                 .sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE), info.getCity());
         $("[data-test-id='date'] input")
