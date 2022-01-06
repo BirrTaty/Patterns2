@@ -11,9 +11,10 @@ build: off
 
 install:
 
-  - java -jar ./artifacts/app-card-delivery.jar &
+  - java -jar ./artifacts/app-card-delivery.jar - P:profile=test &
 
 test_script:
   - chmod +x gradlew
   - ./gradlew test --info -Dselenide.headless=true
+
 
